@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — Sistema ERP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f1ea;
+    --paper-deep: #ece5d6;
+    --ink: #1a1a1a;
+    --ink-soft: #2c2926;
+    --muted: #6b6660;
+    --muted-2: #8a847d;
+    --line: #d9d2c2;
+    --accent: #E82C70;
+    --accent-deep: #c41f5d;
+    --highlight: #fdf0f4;
+    --brand: #E82C70;
+    --brand-deep: #c41f5d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    min-height: 100vh;
+    padding: 60px 24px;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(232, 44, 112, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 100%, rgba(232, 44, 112, 0.03) 0%, transparent 50%);
+  }
+
+  .doc {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 80px -20px rgba(26, 26, 26, 0.08), 0 1px 2px rgba(26,26,26,0.04);
+    position: relative;
+  }
+
+  /* CABEÇALHO */
+  .header {
+    padding: 56px 72px 48px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(to bottom, var(--brand), transparent);
+  }
+
+  .logo-wrap {
+    display: none;
+  }
+
+  .brand-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 22px;
+    background: var(--line);
+    display: block;
+  }
+
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+  }
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .doc-title {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .doc-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent-deep);
+  }
+
+  .doc-subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 480px;
+  }
+
+  .meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .meta-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted-2);
+  }
+
+  .meta-value {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* SEÇÕES */
+  .section {
+    padding: 48px 72px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-num span {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .section-num h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .section p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  /* TABELA DE VALORES */
+  .pricing {
+    margin-top: 8px;
+  }
+
+  .pricing-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+
+  .pricing-row:last-child { border-bottom: none; }
+
+  .pricing-row.highlight {
+    background: var(--highlight);
+    margin: 0 -24px;
+    padding: 28px 24px;
+    border: 1px solid rgba(232, 44, 112, 0.15);
+    border-radius: 2px;
+  }
+
+  .pricing-info h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .pricing-info p {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .pricing-value {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .pricing-value .amount {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    display: block;
+  }
+
+  .pricing-value .period {
+    font-size: 11px;
+    color: var(--muted-2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .pricing-value .amount em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent-deep);
+    font-size: 20px;
+  }
+
+  .infra-group {
+    margin-top: 16px;
+    padding: 28px;
+    background: rgba(232, 44, 112, 0.04);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .infra-group h4 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .infra-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 14px;
+  }
+
+  .infra-item:last-child { border-bottom: none; }
+
+  .infra-item .label {
+    color: var(--ink-soft);
+  }
+
+  .infra-item .label small {
+    display: block;
+    color: var(--muted-2);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .infra-item .price {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .infra-item .price small {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* CRONOGRAMA */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .phase {
+    position: relative;
+    padding: 14px 0 14px 24px;
+  }
+
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 22px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--accent);
+  }
+
+  .phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+
+  .phase-name {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .phase-duration {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent-deep);
+    white-space: nowrap;
+  }
+
+  .phase-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .timeline-total {
+    margin-top: 24px;
+    padding: 18px 24px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+  }
+
+  .timeline-total .lbl {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-total .val {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  /* PAGAMENTO */
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .payment-card {
+    padding: 24px 20px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .payment-card:hover {
+    border-color: var(--accent);
+    background: rgba(232, 44, 112, 0.02);
+  }
+
+  .payment-card.featured {
+    border-color: var(--accent);
+    background: rgba(232, 44, 112, 0.04);
+  }
+
+  .payment-card.featured::before {
+    content: 'Recomendado';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .payment-card .opt {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+
+  .payment-card .price {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+
+  .payment-card .desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .payment-methods {
+    font-size: 13px;
+    color: var(--muted);
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .payment-methods strong {
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* OBSERVAÇÕES */
+  .notice {
+    background: rgba(232, 44, 112, 0.04);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .notice-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .notice p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .notice strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .obs-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .obs-list li {
+    padding: 10px 0 10px 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .obs-list li:last-child { border-bottom: none; }
+
+  .obs-list li::before {
+    content: '§';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-family: 'Fraunces', serif;
+    color: var(--accent);
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 72px 48px;
+    background: var(--ink);
+    color: var(--paper);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+  }
+
+  .footer-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--paper);
+    max-width: 460px;
+  }
+
+  .footer-quote::before {
+    content: '"';
+    font-size: 60px;
+    line-height: 0;
+    position: relative;
+    top: 18px;
+    color: var(--accent);
+    margin-right: 4px;
+  }
+
+  .footer-sign {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(245, 241, 234, 0.6);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-sign .name {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: var(--paper);
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+
+  .footer-team {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    color: var(--paper);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: 13px;
+  }
+
+  .logo-mini {
+    height: 18px;
+    width: auto;
+    display: block;
+  }
+
+  /* PRINT */
+  @media print {
+    body {
+      padding: 0;
+      background: white;
+    }
+    .doc {
+      box-shadow: none;
+      border: none;
+      max-width: 100%;
+    }
+    .section { page-break-inside: avoid; }
+    .payment-card:hover { border-color: var(--line); background: var(--paper); }
+  }
+
+  /* RESPONSIVO */
+  @media (max-width: 720px) {
+    body { padding: 24px 12px; }
+    .header, .section, .footer { padding-left: 28px; padding-right: 28px; }
+    .header { padding-top: 40px; padding-bottom: 32px; }
+    .doc-title { font-size: 38px; }
+    .header-grid { grid-template-columns: 1fr; }
+    .meta { text-align: left; }
+    .logo { height: 30px; }
+    .brand-row { gap: 12px; margin-bottom: 24px; }
+    .payment-grid { grid-template-columns: 1fr; }
+    .pricing-row { grid-template-columns: 1fr; gap: 8px; }
+    .pricing-value { text-align: left; }
+    .footer { grid-template-columns: 1fr; padding: 32px 28px; }
+    .footer-sign { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- CABEÇALHO -->
+  <header class="header">
+    <div class="header-grid">
+      <div>
+        <div class="brand-row">
+          <svg class="logo" viewBox="0 0 2237 1116" xmlns="http://www.w3.org/2000/svg" aria-label="In100tiva">
+            <path d="M2124.72 246.027C2063.45 154.053 1974.44 85.4649 1858.59 43.285C1652.83 -31.7687 1421.69 39.5383 1283.66 215.872C1226.8 288.509 1174.95 367.853 1120.99 443.088C1052.94 538.748 986.048 635.556 912.505 726.02C831.771 825.245 727.107 860.777 608.182 813.703C514.999 776.841 459.464 700.518 442.121 596.156C424.476 489.921 456.322 400.726 539.232 338.061C633.925 266.452 734.359 262.887 835.579 322.712C860.173 337.275 875.099 335.402 892.08 310.203C926.404 259.2 963.569 210.373 999.464 160.579C1020.37 131.573 1019.53 124.502 991.245 106.555C784.939 -24.5776 531.376 -30.56 326.882 172.363C213.093 285.306 163.178 430.035 180.763 591.141C206.566 827.844 329.178 993.36 541.347 1070.71C747.11 1145.76 978.253 1074.46 1116.27 898.123C1173.14 825.487 1224.02 747.532 1277.98 672.237L1279.01 670.847C1347.06 575.248 1413.95 478.439 1487.49 387.976C1568.23 288.751 1672.89 253.218 1791.82 300.292C1877.69 334.254 1931.53 401.875 1953.04 493.97V245.966H2124.85L2124.72 246.027Z" fill="#E82C70"/>
+            <path d="M248.927 201.792V50.2949C248.927 25.8208 229.106 6 204.632 6H50.4765C26.2442 6 6.54403 25.6397 6.54403 49.872C6.54403 49.9929 6.54403 50.1136 6.54403 50.2949C6.36274 368.215 6.18129 686.136 6 1004.06C6 1101.11 5.99997 1101.77 95.8589 1101.17C132.721 1100.93 169.583 1099.29 206.445 1097.78C230.194 1096.82 248.927 1077.3 248.927 1053.49V897.519C248.927 888.756 246.208 880.297 241.434 872.924C190.673 794.909 159.068 700.881 147.224 592.228C132.419 456.503 164.205 332.199 240.286 227.716C245.785 220.163 248.927 211.159 248.927 201.792Z" fill="#E82C70"/>
+            <path d="M2219.18 522.855C2207.45 415.35 2175.73 322.591 2124.72 246.026H1952.92V494.03C1954.74 501.825 1956.43 509.742 1957.76 517.9C1975.4 624.135 1943.62 713.329 1860.65 775.995C1765.95 847.604 1665.52 851.169 1564.3 791.344C1539.71 776.78 1524.78 778.653 1507.8 803.853C1473.47 854.855 1436.31 903.682 1400.41 953.476C1379.51 982.483 1380.35 989.553 1408.63 1007.5C1614.94 1138.63 1868.5 1144.62 2073 941.693C2186.79 828.75 2236.7 684.021 2219.12 522.915L2219.18 522.855Z" fill="#E82C70"/>
+          </svg>
+          <span class="brand-divider"></span>
+          <span class="brand-mark">Proposta Comercial</span>
+        </div>
+        <h1 class="doc-title">Sistema ERP <em>sob medida</em></h1>
+        <p class="doc-subtitle">Desenvolvimento de plataforma de gestão personalizada, com infraestrutura escalável e suporte contínuo.</p>
+      </div>
+      <div class="meta">
+        <div><span class="meta-label">Proposta</span><br><span class="meta-value">Nº 037 / 2026</span></div>
+        <div style="margin-top:14px"><span class="meta-label">Emitida em</span><br><span class="meta-value">05 de maio de 2026</span></div>
+        <div style="margin-top:14px"><span class="meta-label">Validade</span><br><span class="meta-value">48 horas</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ESCOPO -->
+  <section class="section">
+    <div class="section-num"><span>I.</span><h2>Escopo do projeto</h2></div>
+    <p>Desenvolvimento completo de um sistema ERP customizado, contemplando análise de requisitos, prototipação, implementação, testes e implantação. O projeto inclui <strong>até 15 funcionalidades</strong> alinhadas com o cliente na fase de levantamento.</p>
+    <p>Funcionalidades adicionais ao escopo inicial — bem como novas demandas durante e após a entrega — serão tratadas em <strong>reunião específica</strong>, com avaliação de prazo e elaboração de orçamento complementar.</p>
+  </section>
+
+  <!-- INVESTIMENTO -->
+  <section class="section">
+    <div class="section-num"><span>II.</span><h2>Investimento</h2></div>
+
+    <div class="pricing">
+
+      <div class="pricing-row highlight">
+        <div class="pricing-info">
+          <h3>Desenvolvimento do ERP</h3>
+          <p>Análise, design, desenvolvimento, testes e implantação · Até 15 funcionalidades</p>
+        </div>
+        <div class="pricing-value">
+          <span class="amount">R$ 5.000<em>,00</em></span>
+          <span class="period">Pagamento único</span>
+        </div>
+      </div>
+
+      <div class="pricing-row">
+        <div class="pricing-info">
+          <h3>Manutenção evolutiva</h3>
+          <p>Correções, ajustes e suporte técnico contínuo</p>
+        </div>
+        <div class="pricing-value">
+          <span class="amount">R$ 200<em>,00</em></span>
+          <span class="period">A cada 10 clientes ativos / mês</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="infra-group">
+      <h4>Infraestrutura</h4>
+
+      <div class="infra-item">
+        <div class="label">
+          Domínio
+          <small>Registro e renovação anual</small>
+        </div>
+        <div class="price">R$ 100,00 <small>/ ano</small></div>
+      </div>
+
+      <div class="infra-item">
+        <div class="label">
+          Banco de dados
+          <small>Inclui 100 GB de armazenamento — excedente cobrado à parte</small>
+        </div>
+        <div class="price">R$ 300,00 <small>/ mês</small></div>
+      </div>
+
+      <div class="infra-item">
+        <div class="label">
+          Hospedagem
+          <small>Provedor a critério do cliente — valor médio de mercado</small>
+        </div>
+        <div class="price">R$ 150,00 <small>/ mês ·  aprox.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRONOGRAMA -->
+  <section class="section">
+    <div class="section-num"><span>III.</span><h2>Cronograma de entrega</h2></div>
+    <p>Estimativa baseada no escopo de até 15 funcionalidades. Datas precisas serão fixadas após o levantamento detalhado de requisitos.</p>
+
+    <div class="timeline">
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-name">Levantamento de requisitos</div>
+          <div class="phase-duration">1 semana</div>
+        </div>
+        <div class="phase-desc">Reuniões de descoberta, mapeamento de processos e definição das 15 funcionalidades.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-name">Design e prototipação</div>
+          <div class="phase-duration">2 semanas</div>
+        </div>
+        <div class="phase-desc">Wireframes, fluxos de uso e protótipo navegável para validação.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-name">Desenvolvimento</div>
+          <div class="phase-duration">6 semanas</div>
+        </div>
+        <div class="phase-desc">Implementação iterativa do back-end e front-end, com entregas semanais para acompanhamento.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-name">Testes e ajustes</div>
+          <div class="phase-duration">2 semanas</div>
+        </div>
+        <div class="phase-desc">Testes funcionais, correções, refinamento de UX e homologação com o cliente.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-name">Implantação e treinamento</div>
+          <div class="phase-duration">1 semana</div>
+        </div>
+        <div class="phase-desc">Deploy em produção, configuração de infraestrutura e treinamento da equipe.</div>
+      </div>
+    </div>
+
+    <div class="timeline-total">
+      <span class="lbl">Prazo total estimado</span>
+      <span class="val">12 semanas · ~3 meses</span>
+    </div>
+  </section>
+
+  <!-- PAGAMENTO -->
+  <section class="section">
+    <div class="section-num"><span>IV.</span><h2>Formas de pagamento</h2></div>
+    <p>Modalidades disponíveis para o investimento de desenvolvimento (R$ 5.000,00). Mensalidades de manutenção e infraestrutura são cobradas conforme demanda.</p>
+
+    <div class="payment-grid">
+      <div class="payment-card">
+        <div class="opt">Opção I</div>
+        <div class="price">2× R$ 2.500,00</div>
+        <div class="desc">50% no início do projeto · 50% na entrega final, após homologação.</div>
+      </div>
+
+      <div class="payment-card featured">
+        <div class="opt">Opção II</div>
+        <div class="price">R$ 4.500,00</div>
+        <div class="desc">À vista, com 10% de desconto. Início imediato após confirmação.</div>
+      </div>
+
+      <div class="payment-card">
+        <div class="opt">Opção III</div>
+        <div class="price">Até 5× R$ 1.000,00</div>
+        <div class="desc">Valor total parcelado em até 5× no cartão de crédito, sem juros.</div>
+      </div>
+    </div>
+
+    <div class="payment-methods">
+      <strong>Métodos aceitos:</strong> PIX · transferência bancária · cartão de crédito (parcelamento em até 5× sem juros).
+    </div>
+  </section>
+
+  <!-- OBSERVAÇÕES -->
+  <section class="section">
+    <div class="section-num"><span>V.</span><h2>Termos e observações</h2></div>
+
+    <div class="notice">
+      <div class="notice-title">Importante — Funcionalidades adicionais</div>
+      <p>O valor de <strong>R$ 5.000,00</strong> contempla o desenvolvimento de <strong>até 15 funcionalidades</strong> definidas em conjunto na etapa de levantamento. Qualquer funcionalidade adicional ao escopo inicial, bem como novas demandas durante ou após a entrega do projeto, serão atendidas <strong>mediante reunião específica</strong> para análise técnica, definição de prazo e elaboração de orçamento próprio.</p>
+    </div>
+
+    <ul class="obs-list">
+      <li>Os custos de infraestrutura (domínio, banco e hospedagem) são repassados ao cliente conforme valores praticados pelos respectivos provedores e podem variar.</li>
+      <li>O excedente de armazenamento do banco de dados (acima de 100 GB) será cobrado conforme tabela do provedor, comunicado previamente ao cliente.</li>
+      <li>Garantia de 90 dias para correção de falhas no escopo entregue, contados a partir da data de implantação em produção.</li>
+      <li>Esta proposta é válida por <strong>48 horas</strong> a partir da data de emissão. Após esse prazo, os valores podem ser alterados devido à demanda do time e à disponibilidade da equipe.</li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-quote">
+      Bons sistemas nascem de bons acordos. Estou à disposição para alinharmos os detalhes e iniciarmos o projeto.
+    </div>
+    <div class="footer-sign">
+      <div class="name">Atenciosamente</div>
+      <div>—</div>
+      <div class="footer-team">
+        <svg class="logo-mini" viewBox="0 0 2237 1116" xmlns="http://www.w3.org/2000/svg" aria-label="In100tiva">
+          <path d="M2124.72 246.027C2063.45 154.053 1974.44 85.4649 1858.59 43.285C1652.83 -31.7687 1421.69 39.5383 1283.66 215.872C1226.8 288.509 1174.95 367.853 1120.99 443.088C1052.94 538.748 986.048 635.556 912.505 726.02C831.771 825.245 727.107 860.777 608.182 813.703C514.999 776.841 459.464 700.518 442.121 596.156C424.476 489.921 456.322 400.726 539.232 338.061C633.925 266.452 734.359 262.887 835.579 322.712C860.173 337.275 875.099 335.402 892.08 310.203C926.404 259.2 963.569 210.373 999.464 160.579C1020.37 131.573 1019.53 124.502 991.245 106.555C784.939 -24.5776 531.376 -30.56 326.882 172.363C213.093 285.306 163.178 430.035 180.763 591.141C206.566 827.844 329.178 993.36 541.347 1070.71C747.11 1145.76 978.253 1074.46 1116.27 898.123C1173.14 825.487 1224.02 747.532 1277.98 672.237L1279.01 670.847C1347.06 575.248 1413.95 478.439 1487.49 387.976C1568.23 288.751 1672.89 253.218 1791.82 300.292C1877.69 334.254 1931.53 401.875 1953.04 493.97V245.966H2124.85L2124.72 246.027Z" fill="#E82C70"/>
+          <path d="M248.927 201.792V50.2949C248.927 25.8208 229.106 6 204.632 6H50.4765C26.2442 6 6.54403 25.6397 6.54403 49.872C6.54403 49.9929 6.54403 50.1136 6.54403 50.2949C6.36274 368.215 6.18129 686.136 6 1004.06C6 1101.11 5.99997 1101.77 95.8589 1101.17C132.721 1100.93 169.583 1099.29 206.445 1097.78C230.194 1096.82 248.927 1077.3 248.927 1053.49V897.519C248.927 888.756 246.208 880.297 241.434 872.924C190.673 794.909 159.068 700.881 147.224 592.228C132.419 456.503 164.205 332.199 240.286 227.716C245.785 220.163 248.927 211.159 248.927 201.792Z" fill="#E82C70"/>
+          <path d="M2219.18 522.855C2207.45 415.35 2175.73 322.591 2124.72 246.026H1952.92V494.03C1954.74 501.825 1956.43 509.742 1957.76 517.9C1975.4 624.135 1943.62 713.329 1860.65 775.995C1765.95 847.604 1665.52 851.169 1564.3 791.344C1539.71 776.78 1524.78 778.653 1507.8 803.853C1473.47 854.855 1436.31 903.682 1400.41 953.476C1379.51 982.483 1380.35 989.553 1408.63 1007.5C1614.94 1138.63 1868.5 1144.62 2073 941.693C2186.79 828.75 2236.7 684.021 2219.12 522.915L2219.18 522.855Z" fill="#E82C70"/>
+        </svg>
+        <span>Equipe In100tiva</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
